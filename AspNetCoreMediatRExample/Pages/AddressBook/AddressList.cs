@@ -24,7 +24,11 @@ namespace AspNetCoreMediatRExample.Pages.AddressBook
             : this(line1, city, state, postalCode) =>
             Line2 = line2;
 
-        public Guid Id { get; }
+        private AddressBookEntry(string id, string line1, string line2, string city, string state, string postalCode)
+	        : this(line1, line2, city, state, postalCode) =>
+	        Id = Guid.Parse(id);
+
+		public Guid Id { get; }
         public string Line1 { get; }
         public string Line2 { get; }
         public string City { get; }
@@ -36,5 +40,8 @@ namespace AspNetCoreMediatRExample.Pages.AddressBook
 
         public static AddressBookEntry Create(string line1, string line2, string city, string state, string postalCode)
             => new AddressBookEntry(line1, line2, city, state, postalCode);
+
+		public static AddressBookEntry Update(string id, string line1, string line2, string city, string state, string postalCode)
+			=> new AddressBookEntry(id, line1, line2, city, state, postalCode);
     }
 }

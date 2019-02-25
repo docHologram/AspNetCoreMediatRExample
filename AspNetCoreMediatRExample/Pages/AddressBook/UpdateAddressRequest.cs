@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using MediatR;
 
 namespace AspNetCoreMediatRExample.Pages.AddressBook
 {
     public class UpdateAddressRequest
-        : IRequest
+        : IRequest<AddressBookEntry>
     {
         public string Id { get; set; }
 
